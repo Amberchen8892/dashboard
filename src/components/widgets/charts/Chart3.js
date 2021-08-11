@@ -14,7 +14,7 @@ const Chart3 = () => {
       }
     },
     colors: ['#27c6db'],
-    labels: ['System Health'],
+    labels: ['Credit Health'],
     plotOptions: {
       radialBar: {
         dataLabels: {

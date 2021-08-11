@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import { Box, Button, FormHelperText, TextField } from '@material-ui/core';
 import useAuth from '../../../hooks/useAuth';
 import useMounted from '../../../hooks/useMounted';
+import { Link as RouterLink } from 'react-router-dom';
 
 const LoginJWT = (props) => {
   const mounted = useMounted();
@@ -87,16 +88,18 @@ const LoginJWT = (props) => {
             </Box>
           )}
           <Box sx={{ mt: 2 }}>
-            <Button
-              color="primary"
-              disabled={isSubmitting}
-              fullWidth
-              size="large"
-              type="submit"
-              variant="contained"
-            >
-              Log In
-            </Button>
+            <RouterLink to="/dashboard/analytics">
+              <Button
+                color="primary"
+                disabled={isSubmitting}
+                fullWidth
+                size="large"
+                type="submit"
+                variant="contained"
+              >
+                Log In
+              </Button>
+            </RouterLink>
           </Box>
           {/* <Box sx={{ mt: 2 }}>
             <Alert severity="info">

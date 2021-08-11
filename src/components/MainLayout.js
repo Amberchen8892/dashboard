@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Outlet } from 'react-router-dom';
 import { experimentalStyled } from '@material-ui/core/styles';
 import Footer from './Footer';
-import MainNavbar from './MainNavbar';
+// import MainNavbar from './MainNavbar';
 import MainSidebar from './MainSidebar';
 
 const MainLayoutRoot = experimentalStyled('div')(({ theme }) => ({
@@ -17,7 +17,7 @@ const MainLayout = ({ children }) => {
 
   return (
     <MainLayoutRoot>
-      <MainNavbar onSidebarMobileOpen={() => setIsSidebarMobileOpen(true)} />
+      {/* <MainNavbar onSidebarMobileOpen={() => setIsSidebarMobileOpen(true)} /> */}
       <MainSidebar
         onMobileClose={() => setIsSidebarMobileOpen(false)}
         openMobile={isSidebarMobileOpen}

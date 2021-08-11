@@ -139,13 +139,13 @@
 //   const ShowCredit = ()=>{
 //       return (
 
-//         <Chart 
+//         <Chart
 //          height="393"
 //          options={chartOptions}
 //          series={data.series}
-//          type="line" 
+//          type="line"
 //         />
-            
+
 //       );
 //   };
 //   export default ShowCredit

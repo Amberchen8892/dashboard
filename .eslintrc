@@ -12,6 +12,7 @@
     "airbnb"
   ],
   "rules": {
+    "react/prop-types": "off",
     "class-methods-use-this": "off",
     "comma-dangle": "off",
     "import/no-cycle": "off",

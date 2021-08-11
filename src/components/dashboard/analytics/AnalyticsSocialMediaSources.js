@@ -6,12 +6,11 @@ import {
   CardActions,
   CardContent,
   CardHeader,
-  Tooltip,
   Typography
 } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import ArrowRightIcon from '../../../icons/ArrowRight';
-import InformationCircleIcon from '../../../icons/InformationCircle';
+// import InformationCircleIcon from '../../../icons/InformationCircle';
 
 const AnalyticsSocialMediaSources = () => {
   const theme = useTheme();
@@ -25,16 +24,17 @@ const AnalyticsSocialMediaSources = () => {
       }
     },
     colors: [
-      'rgba(86, 100, 210, 0.5)',
-      '#FFB547',
-      '#7BC67E',
+      '#999999',
+      '#FFCC00',
+      '#669933',
       '#64B6F7',
-      '#455a64'
+      '#12ae6d',
+      '#FF0000'
     ],
     dataLabels: {
       enabled: false
     },
-    labels: ['Linkedin', 'Facebook', 'Instagram', 'Twitter', 'Other'],
+    labels: ['Contact Attempted', 'Work in Progress', 'Waiting on Money', 'Trade Lines Needed', 'Closed', 'Return to Lead Source'],
     legend: {
       fontSize: '14px',
       fontFamily: theme.typography.fontFamily,
@@ -59,7 +59,7 @@ const AnalyticsSocialMediaSources = () => {
     }
   };
 
-  const chartSeries = [10, 10, 20, 10, 70];
+  const chartSeries = [10, 10, 20, 10, 50, 30];
 
   return (
     <Card>
@@ -77,11 +77,11 @@ const AnalyticsSocialMediaSources = () => {
               color="textPrimary"
               variant="h6"
             >
-              Social Media Sources
+              Contact Status
             </Typography>
-            <Tooltip title="Widget25 source by Social Media platforms">
+            {/* <Tooltip title="Widget25 source by Social Media platforms">
               <InformationCircleIcon fontSize="small" />
-            </Tooltip>
+            </Tooltip> */}
           </Box>
         )}
       />
@@ -105,7 +105,7 @@ const AnalyticsSocialMediaSources = () => {
           endIcon={<ArrowRightIcon fontSize="small" />}
           variant="text"
         >
-          See all visits
+          See all
         </Button>
       </CardActions>
     </Card>

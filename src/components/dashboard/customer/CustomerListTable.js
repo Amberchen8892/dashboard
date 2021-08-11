@@ -9,7 +9,7 @@ import {
   Card,
   Checkbox,
   Divider,
-  IconButton,
+  // IconButton,
   InputAdornment,
   Link,
   Tab,
@@ -21,13 +21,14 @@ import {
   TableRow,
   Tabs,
   TextField,
-  Typography
+  Typography,
 } from '@material-ui/core';
-import ArrowRightIcon from '../../../icons/ArrowRight';
-import PencilAltIcon from '../../../icons/PencilAlt';
+// import ArrowRightIcon from '../../../icons/ArrowRight';
+// import PencilAltIcon from '../../../icons/PencilAlt';
 import SearchIcon from '../../../icons/Search';
 import getInitials from '../../../utils/getInitials';
 import Scrollbar from '../../Scrollbar';
+import ScoreChart from './ScoreChart';
 
 const tabs = [
   {
@@ -58,11 +59,11 @@ const sortOptions = [
     value: 'updatedAt|asc'
   },
   {
-    label: 'Total orders (highest)',
+    label: 'Total kW (highest)',
     value: 'orders|desc'
   },
   {
-    label: 'Total orders (lowest)',
+    label: 'Total kW (lowest)',
     value: 'orders|asc'
   }
 ];
@@ -334,13 +335,16 @@ const CustomerListTable = (props) => {
                   Created
                 </TableCell>
                 <TableCell>
-                  Paid For
+                  Contact Status
                 </TableCell>
                 <TableCell>
                   kW
                 </TableCell>
-                <TableCell align="right">
-                  Status
+                <TableCell>
+                  Timeline
+                </TableCell>
+                <TableCell>
+                  % To Goal
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -382,7 +386,7 @@ const CustomerListTable = (props) => {
                           <Link
                             color="inherit"
                             component={RouterLink}
-                            to="/dashboard/customers/1"
+                            to="/customers/1"
                             variant="subtitle2"
                           >
                             {customer.name}
@@ -401,25 +405,17 @@ const CustomerListTable = (props) => {
                       {customer.craeted}
                     </TableCell>
                     <TableCell>
-                      {customer.totalOrders}
+                      {customer.status}
                     </TableCell>
                     <TableCell>
                       {numeral(customer.totalAmountSpent)
-                        .format(`${customer.currency}0,0.00`)}
+                        .format(`${customer.currency}0,0`)}
+                    </TableCell>
+                    <TableCell>
+                      {customer.timeline}
                     </TableCell>
                     <TableCell align="right">
-                      <IconButton
-                        component={RouterLink}
-                        to="/dashboard/customers/1/edit"
-                      >
-                        <PencilAltIcon fontSize="small" />
-                      </IconButton>
-                      <IconButton
-                        component={RouterLink}
-                        to="/dashboard/customers/1"
-                      >
-                        <ArrowRightIcon fontSize="small" />
-                      </IconButton>
+                      <ScoreChart score={customer.num} />
                     </TableCell>
                   </TableRow>
                 );

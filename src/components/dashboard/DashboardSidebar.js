@@ -33,7 +33,7 @@ const sections = [
       // },
       {
         title: 'Analytics',
-        path: '/dashboard/analytics',
+        path: '/',
         icon: <ChartPieIcon fontSize="small" />
       },
       // {
@@ -53,12 +53,12 @@ const sections = [
     items: [
       {
         title: 'Customers',
-        path: '/dashboard/customers',
+        path: '/customers',
         icon: <UsersIcon fontSize="small" />,
         children: [
           {
             title: 'List',
-            path: '/dashboard/customers'
+            path: '/customers'
           },
           // {
           //   title: 'Details',
@@ -166,12 +166,12 @@ const sections = [
       // },
       {
         title: 'Mail',
-        path: '/dashboard/mail',
+        path: '/mail',
         icon: <MailIcon fontSize="small" />
       },
       {
         title: 'Chat',
-        path: '/dashboard/chat',
+        path: '/chat',
         icon: <ChatAltIcon fontSize="small" />
       },
       // {

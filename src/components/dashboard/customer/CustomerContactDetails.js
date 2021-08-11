@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
 import {
-  Box,
-  Button,
   Card,
   CardHeader,
   Divider,
@@ -11,8 +9,8 @@ import {
   TableRow,
   Typography
 } from '@material-ui/core';
-import LockIcon from '../../../icons/Lock';
-import UserIcon from '../../../icons/User';
+// import LockIcon from '../../../icons/Lock';
+// import UserIcon from '../../../icons/User';
 import Label from '../../Label';
 
 const CustomerContactDetails = (props) => {
@@ -137,7 +135,7 @@ const CustomerContactDetails = (props) => {
           </TableRow>
         </TableBody>
       </Table>
-      <Box
+      {/* <Box
         sx={{
           alignItems: 'flex-start',
           display: 'flex',
@@ -160,7 +158,7 @@ const CustomerContactDetails = (props) => {
         >
           Login as Customer
         </Button>
-      </Box>
+      </Box> */}
     </Card>
   );
 };

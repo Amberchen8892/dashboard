@@ -1,37 +1,65 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Box, Breadcrumbs, Button, Container, Grid, Link, Typography } from '@material-ui/core';
+import {
+  Box,
+  Breadcrumbs,
+  Container,
+  Grid,
+  Link,
+  Typography,
+} from '@material-ui/core';
 import {
   AnalyticsGeneralOverview,
-  AnalyticsMostVisitedPages,
+  // AnalyticsMostVisitedPages,
   AnalyticsSocialMediaSources,
-  AnalyticsVisitsByCountry,
-  AnalyticsTrafficSources
+  // AnalyticsVisitsByCountry,
+  //  AnalyticsTrafficSources,
 } from '../../components/dashboard/analytics';
 import useSettings from '../../hooks/useSettings';
-import ChevronDownIcon from '../../icons/ChevronDown';
+// import ChevronDownIcon from '../../icons/ChevronDown';
 import ChevronRightIcon from '../../icons/ChevronRight';
-import DownloadIcon from '../../icons/Download';
+// import DownloadIcon from '../../icons/Download';
 import gtm from '../../lib/gtm';
+import AnalyticsClosedOpen from '../../components/dashboard/analytics/AnalyticsClosedOpen';
+import { CustomerListTable } from '../../components/dashboard/customer';
+// import AnalyticsRevenue from '../../components/dashboard/analytics/AnalyticsRevenue';
+import useMounted from '../../hooks/useMounted';
+import { customerApi } from '../../__fakeApi__/customerApi';
 
 const Analytics = () => {
+  const mounted = useMounted();
   const { settings } = useSettings();
-
+  const [customers, setCustomers] = useState([]);
   useEffect(() => {
     gtm.push({ event: 'page_view' });
   }, []);
+  const getCustomers = useCallback(async () => {
+    try {
+      const data = await customerApi.getCustomers();
+
+      if (mounted.current) {
+        setCustomers(data);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }, [mounted]);
+
+  useEffect(() => {
+    getCustomers();
+  }, [getCustomers]);
 
   return (
     <>
       <Helmet>
-        <title>Dashboard: Analytics | Material Kit Pro</title>
+        <title>Dashboard: Analytics | Wype</title>
       </Helmet>
       <Box
         sx={{
           backgroundColor: 'background.default',
           minHeight: '100%',
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth={settings.compact ? 'xl' : false}>
@@ -68,7 +96,7 @@ const Analytics = () => {
                 </Typography>
               </Breadcrumbs>
             </Grid>
-            <Grid item>
+            {/* <Grid item>
               <Button
                 endIcon={<DownloadIcon fontSize="small" />}
                 variant="outlined"
@@ -83,7 +111,7 @@ const Analytics = () => {
               >
                 Last month
               </Button>
-            </Grid>
+            </Grid> */}
           </Grid>
           <Box sx={{ py: 3 }}>
             <AnalyticsGeneralOverview />
@@ -98,32 +126,29 @@ const Analytics = () => {
               md={8}
               xs={12}
             >
-              <AnalyticsTrafficSources sx={{ height: '100%' }} />
+              <AnalyticsClosedOpen sx={{ height: '100%' }} />
+              {/* <AnalyticsVisitsByCountry /> */}
+            </Grid>
+            <Grid item xl={3} md={4} xs={12}>
+              {/* <AnalyticsVisitsByCountry /> */}
+              <AnalyticsSocialMediaSources />
             </Grid>
             <Grid
               item
-              xl={3}
-              md={4}
+              xl={12}
+              md={12}
               xs={12}
             >
-              <AnalyticsVisitsByCountry />
+              <CustomerListTable customers={customers} />
             </Grid>
-            <Grid
-              item
-              xl={9}
-              md={8}
-              xs={12}
-            >
-              <AnalyticsMostVisitedPages />
-            </Grid>
-            <Grid
+            {/* <Grid
               item
               xl={3}
               md={4}
               xs={12}
             >
               <AnalyticsSocialMediaSources />
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </Box>

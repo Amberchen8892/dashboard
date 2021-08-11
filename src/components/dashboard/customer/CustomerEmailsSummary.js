@@ -18,7 +18,7 @@ import CustomerProgress from './CustomerProgress';
 
 const CustomerEmailsSummary = (props) => (
   <Card {...props}>
-    <CardHeader title="Where are you at?" />
+    <CardHeader title="Customer's Timeline" />
     <Divider />
     <CardContent>
       <CustomerProgress />

@@ -1,13 +1,20 @@
 import { useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Box, Card, CardContent, Container, Divider, Link, Typography } from '@material-ui/core';
-import AuthBanner from '../../components/authentication/AuthBanner';
+import {
+  Box,
+  Card,
+  CardContent,
+  Container,
+  Link,
+  Typography,
+} from '@material-ui/core';
+// import AuthBanner from '../../components/authentication/AuthBanner';
 import {
   LoginAmplify,
   LoginAuth0,
   LoginFirebase,
-  LoginJWT
+  LoginJWT,
 } from '../../components/authentication/login';
 import Logo from '../../components/Logo';
 import useAuth from '../../hooks/useAuth';
@@ -17,7 +24,7 @@ const platformIcons = {
   Amplify: '/static/icons/amplify.svg',
   Auth0: '/static/icons/auth0.svg',
   Firebase: '/static/icons/firebase.svg',
-  JWT: '/static/icons/jwt.svg'
+  JWT: '/static/icons/jwt.svg',
 };
 
 const Login = () => {
@@ -30,17 +37,17 @@ const Login = () => {
   return (
     <>
       <Helmet>
-        <title>Login | Material Kit Pro</title>
+        <title>Login | Wype Portal</title>
       </Helmet>
       <Box
         sx={{
           backgroundColor: 'background.default',
           display: 'flex',
           flexDirection: 'column',
-          minHeight: '100vh'
+          minHeight: '100vh',
         }}
       >
-        <AuthBanner />
+        {/* <AuthBanner /> */}
         <Container
           maxWidth="sm"
           sx={{ py: '80px' }}
@@ -49,14 +56,14 @@ const Login = () => {
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              mb: 8
+              mb: 8,
             }}
           >
             <RouterLink to="/">
               <Logo
                 sx={{
                   height: 40,
-                  width: 40
+                  width: 40,
                 }}
               />
             </RouterLink>
@@ -66,7 +73,7 @@ const Login = () => {
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                p: 4
+                p: 4,
               }}
             >
               <Box
@@ -74,7 +81,7 @@ const Login = () => {
                   alignItems: 'center',
                   display: 'flex',
                   justifyContent: 'space-between',
-                  mb: 3
+                  mb: 3,
                 }}
               >
                 <div>
@@ -97,8 +104,8 @@ const Login = () => {
                     height: 32,
                     '& > img': {
                       maxHeight: '100%',
-                      width: 'auto'
-                    }
+                      width: 'auto',
+                    },
                   }}
                 >
                   <img
@@ -110,7 +117,7 @@ const Login = () => {
               <Box
                 sx={{
                   flexGrow: 1,
-                  mt: 3
+                  mt: 3,
                 }}
               >
                 {platform === 'Amplify' && <LoginAmplify />}
@@ -118,7 +125,7 @@ const Login = () => {
                 {platform === 'Firebase' && <LoginFirebase />}
                 {platform === 'JWT' && <LoginJWT />}
               </Box>
-              <Divider sx={{ my: 3 }} />
+              {/* <Divider sx={{ my: 3 }} />
               <Link
                 color="textSecondary"
                 component={RouterLink}
@@ -126,7 +133,7 @@ const Login = () => {
                 variant="body2"
               >
                 Create new account
-              </Link>
+              </Link> */}
               {platform === 'Amplify' && (
                 <Link
                   color="textSecondary"

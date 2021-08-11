@@ -7,16 +7,19 @@ import { useTheme } from '@material-ui/core/styles';
 const data = {
   series: [
     {
-      color: 'rgba(204, 204, 204, 0.8)',
-      type: 'line',
+      color: '#82CAFF',
       data: [500, 520, 540, 580, 600, 630, 650, 680, 700, 720, 740, 780],
-      name: 'Your Score'
+      name: 'Archived'
     },
+    // {
+    //   color: '#FF9800',
+    //   data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35],
+    //   name: 'Referral'
+    // },
     {
-      color: '#4CAF50',
-      type: 'area',
-      data: [650, 650, 650, 650, 650, 650, 650, 650, 650, 650, 650, 650],
-      name: 'Target Score'
+      color: '#FFC0CB',
+      data: [450, 530, 560, 590, 620, 650, 550, 580, 600, 700, 750, 790],
+      name: 'Target'
     }
   ],
   xaxis: {
@@ -40,9 +43,9 @@ const data = {
 const AnalyticsTrafficSources = (props) => {
   const theme = useTheme();
   const [selectedSeries, setSelectedSeries] = useState([
-    'Your Score',
+    'Archived',
     // 'Referral',
-    'Target Score'
+    'Target'
   ]);
 
   const handleChange = (event, name) => {
@@ -66,10 +69,6 @@ const AnalyticsTrafficSources = (props) => {
     colors: chartSeries.map((item) => item.color),
     dataLabels: {
       enabled: false
-    },
-    fill: {
-      type: 'solid',
-      opacity: [0.35, 0.2],
     },
     grid: {
       borderColor: theme.palette.divider,

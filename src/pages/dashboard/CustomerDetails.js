@@ -70,7 +70,7 @@ const CustomerDetails = () => {
   return (
     <>
       <Helmet>
-        <title>Dashboard: Customer Details | Material Kit Pro</title>
+        <title>Dashboard: Customer Details | Wype</title>
       </Helmet>
       <Box
         sx={{
@@ -163,6 +163,17 @@ const CustomerDetails = () => {
               >
                 <Grid
                   item
+                  // lg={settings.compact ? 6 : 4}
+                  lg={12}
+                  md={6}
+                  // xl={settings.compact ? 6 : 3}
+                  xl={12}
+                  xs={12}
+                >
+                  <CustomerEmailsSummary />
+                </Grid>
+                <Grid
+                  item
                   lg={settings.compact ? 6 : 4}
                   md={6}
                   xl={settings.compact ? 6 : 3}
@@ -186,15 +197,6 @@ const CustomerDetails = () => {
                   xs={12}
                 >
                   <CustomerInvoicesSummary />
-                </Grid>
-                <Grid
-                  item
-                  lg={settings.compact ? 6 : 4}
-                  md={6}
-                  xl={settings.compact ? 6 : 3}
-                  xs={12}
-                >
-                  <CustomerEmailsSummary />
                 </Grid>
                 <Grid
                   item
